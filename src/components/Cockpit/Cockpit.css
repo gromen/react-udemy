@@ -1,0 +1,23 @@
+.Cockpit {
+  text-align: center;
+}
+
+.Cockpit .button {
+  background-color: white;
+  margin: 20px;
+  transition: all ease-in-out .2s;
+}
+
+.Cockpit button.red {
+  background: red;
+  color: black;
+}
+
+.red {
+  color: red;
+}
+
+.bold {
+  font-weight: bold;
+}
+
