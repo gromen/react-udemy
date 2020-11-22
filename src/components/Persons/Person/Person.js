@@ -7,10 +7,10 @@ const person = ( props ) => {
     const { name, clicked, age, changeValue } = props;
 
     return (
-        <div className={classes.person} onClick={clicked}>
-            <p>I'm {name} and I am {age} years old!</p>
-            <Input change={changeValue}/>
-        </div>
+      <div className={classes.person} onClick={clicked}>
+          <p>I'm {name} and I am {age} years old!</p>
+          <Input change={changeValue}/>
+      </div>
     )
 };
 

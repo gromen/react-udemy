@@ -1,15 +1,11 @@
 import React from 'react';
-import styles from './CharacterDisplay.css'
+import styles from './CharacterDisplay.module.css'
 
 const CharacterDisplay = (props) => {
-  const { character } = props;
-
-  const handlerClick = (item) => item.target.remove();
+  const { character, clicked } = props;
 
   return (
-    character.split('').map((item, index) => {
-      return <div onClick={(item) => handlerClick(item)} key={index} character={item} className={`characterDisplay ${styles.component}`}>{ item }</div>
-    })
+    <div onClick={ clicked } className={`characterDisplay ${styles.component}`}>{ character }</div>
   )
 }
 

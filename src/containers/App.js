@@ -24,9 +24,7 @@ class App extends Component {
   };
 
   nameChangeHandler = (e, id) => {
-    const personIndex = this.state.persons.findIndex(p => {
-      return p.id === id;
-    });
+    const personIndex = this.state.persons.findIndex(p => p.id === id);
 
     let person = {
       ...this.state.persons[personIndex]
@@ -52,12 +50,26 @@ class App extends Component {
   };
 
   inputChangeHandler = (event) => {
-    this.setState({userInput: event.target.value});
-  };
+    const text = event.target.value;
+    
+    this.setState({
+      userInput: text,
+    });
+  }
 
   charsCount = (string) => {
-
     return string.length;
+  };
+
+  handlerDeleteCharacter = (index) => {
+    const chars = [...this.state.userInput]
+    chars.splice(index, 1);
+
+    const text = chars.join('')
+
+    this.setState({
+      userInput: text,
+    })
   };
 
   render() {
@@ -75,8 +87,14 @@ class App extends Component {
       )
     }
 
-    return (
+    const characters = [...this.state.userInput]
+                          .map((character, index) => 
+                            <CharacterDisplay 
+                              character={ character } 
+                              clicked={ () => this.handlerDeleteCharacter(index)}
+                            />)
 
+    return (
       <div className={classes.App}>
         <input
           type="text"
@@ -96,10 +114,9 @@ class App extends Component {
 
         {persons}
 
-        { <CharacterDisplay character={this.state.userInput} /> }
+        { characters }
       </div>
     );
-    // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'));
   }
 }
 
